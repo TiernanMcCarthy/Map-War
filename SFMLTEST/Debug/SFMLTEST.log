@@ -1,0 +1,43 @@
+﻿  GameManager.cpp
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\GameManager.cpp(15,20): warning C4018: '<': signed/unsigned mismatch
+  MapData.cpp
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\MapData.cpp(114,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\MapData.cpp(114,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\MapData.cpp(118,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\MapData.cpp(118,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\MapData.cpp(142,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\MapData.cpp(144,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\MapData.cpp(144,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\MapData.cpp(147,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\MapData.cpp(147,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Settlement.cpp
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(15,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(16,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(18,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(19,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(111,63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(111,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(129,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(129,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(142,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(142,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(156,63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Settlement.cpp(156,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Source.cpp
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(113,73): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(113,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(123,73): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(123,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(133,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(133,46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(144,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(144,46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(252,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(252,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(288,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(329,14): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Source.cpp(360,6): warning C4101: 'size': unreferenced local variable
+  Spawner.cpp
+C:\Users\tiern\Videos\SFML-Map-master\SFMLTEST\Spawner.cpp(7,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  SFMLTEST.vcxproj -> C:\Users\tiern\Videos\SFML-Map-master\Debug\SFMLTEST.exe
