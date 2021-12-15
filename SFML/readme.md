@@ -1,4 +1,4 @@
-[![SFML logo](https://cdn.discordapp.com/attachments/453347680014434314/920490040205934642/unknown.png)
+[![SFML logo](https://cdn.discordapp.com/attachments/453347680014434314/920490040205934642/unknown.png)](https://www.sfml-dev.org)
 
 # SFML — Simple and Fast Multimedia Library
 
