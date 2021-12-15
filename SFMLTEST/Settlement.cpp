@@ -145,6 +145,7 @@ Confirmation TestAvailableLand(Tile* TestTile, Settlement S) //Return A Hex Valu
 			//printf("Tile Found \n");
 			if (TileTest->occupied == false)
 				return  Confirmation(0x1000, TileTest);
+			CheckTarget(&S, TileTest);
 		}
 		//printf("Invalid Tile \n");
 	}
@@ -158,6 +159,7 @@ Confirmation TestAvailableLand(Tile* TestTile, Settlement S) //Return A Hex Valu
 		{
 			if (TileTest->occupied == false)
 				return  Confirmation(0x0010, TileTest);
+			CheckTarget(&S, TileTest);
 		}
 	}
 
@@ -240,3 +242,12 @@ void Settlement::Simulate()
 		//MapData->
 	}
 }
+
+
+
+bool Settlement::operator==(Settlement b)
+{
+	return Home->x == b.GetHomeTile()->x;
+
+}
+

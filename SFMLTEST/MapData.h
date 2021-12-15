@@ -36,6 +36,9 @@ public:
 
 	void GenerateValidLand();
 
+	int FindElementInList(Settlement *Target);
+
+
 	Spawner* SpawnController;
 
 	MapManager();

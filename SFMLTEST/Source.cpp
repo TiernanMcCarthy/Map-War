@@ -288,7 +288,7 @@ int main()
 	srand(time(NULL)); //seed for random function
 	sf::RenderWindow window(sf::VideoMode(981, 1521), "Please work I'm going crazy");
 
-	window.setSize(sf::Vector2u(327, 507)); 
+	//window.setSize(sf::Vector2u(327, 507));
 
 	sf::CircleShape shape(100.0f);
 	shape.setFillColor(sf::Color::Green);
@@ -354,9 +354,9 @@ int main()
 
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
-	window.setFramerateLimit(5);// limit frame rate to a reasonable level
+	int FrameSpeed = 60;
+	window.setFramerateLimit(FrameSpeed);// limit frame rate to a reasonable level
 
-	int FrameSpeed = 5;
 	int size;
 	GameManager Manager = GameManager(MapData);
 	
@@ -379,6 +379,10 @@ int main()
 				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 				{
 					FrameSpeed -= 1;
+					//MapData.FindElementInList(new Settlement());
+					Settlement* a;
+					a = &(*MapData.PlayerList)[MapData.PlayerList->size() / 4 - 50];
+					MapData.FindElementInList(a);
 					window.setFramerateLimit(FrameSpeed);
 				}
 			}

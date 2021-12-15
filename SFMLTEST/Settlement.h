@@ -23,7 +23,7 @@ public:
 
 	sf::Color GetColour();
 
-
+	bool operator == (Settlement b);
 private:
 
 	

@@ -5,6 +5,9 @@
 #include "Spawner.h"
 #include <SFML/System.hpp>
 #include <vector>
+#include <thread>
+#include <math.h>
+#include <future>
 
 
 MapManager::MapManager(int Size) //Do not pursue
@@ -148,3 +151,193 @@ void MapManager::GenerateValidLand() //Regenerate Land Map incase of change
 		}
 	}
 }
+
+
+void Gaming(int epic)
+{
+
+	for (int i = 0; i < epic; i++)
+	{
+		printf("Thread using function pointer as a callable \n");
+	
+	
+	}
+
+
+
+}
+
+struct Passer
+{
+public:
+
+	int Index;
+	bool Result;
+
+
+	Passer(int Ind, bool Res)
+	{
+		Index = Ind;
+		Result = Res;
+	}
+
+	Passer()
+	{
+		Index = 0;
+		Result = false;
+	}
+};
+
+
+Passer GetIndex(int Lower, int Higher, std::vector<Settlement> *Settlements,Settlement *Item,Passer Result)
+{
+	Settlement* a;
+	for (int i = Lower; i <= Higher; i++)  //Maybe wrong? Maybe missing some??
+	{
+		a=&(*Settlements)[i];
+		if (a == Item)
+		{
+			printf("We FOUND THEM");
+			a = NULL;
+			delete a;
+			Result = Passer(i, true);
+			return Passer(i, true);
+		}
+
+	}
+
+
+
+
+	return Passer(0, false);
+
+
+}
+
+
+// A callable object
+class thread_obj {
+public:
+	void operator()(int Lower, int Higher, std::vector<Settlement>* Settlements, Settlement* Item, Passer& Result)
+	{
+		Settlement* a;
+		for (int i = Lower; i <= Higher; i++)  //Maybe wrong? Maybe missing some??
+		{
+			a = &(*Settlements)[i];
+			if (a == Item)
+			{
+				printf("We FOUND THEM");
+				a = NULL;
+				delete a;
+				Result = Passer(i, true);
+				break;
+				//return Passer(i, true);
+			}
+
+		}
+	}
+};
+
+
+
+int MapManager::FindElementInList(Settlement *Target)
+{
+	int TotalSize = PlayerList->size();
+	
+	if (TotalSize>= 4)
+	{
+
+
+
+		int Quarter = floor(TotalSize / 4) - 1;
+
+		Passer Result1;
+		Passer Result2;
+		Passer Result3;
+		Passer Result4;
+		//Thread 1 gets 0-Quater;
+
+		//auto future = std::async(GetIndex, 0, Quarter, PlayerList, Target, std::ref(Result1));
+		//Passer simple = future.get();
+
+
+		std::thread th1(thread_obj(), 0, Quarter, PlayerList, Target, std::ref(Result1));
+
+		
+		//Thread 2 gets Quarter+1 +Quarter
+		std::thread th2(GetIndex, Quarter+1, Quarter*2, PlayerList, Target, std::ref(Result2));
+
+	
+
+
+		//Thread 3 gets 2*Quater+1 + Quarter
+
+		std::thread th3(GetIndex, Quarter*2 + 1, Quarter * 3, PlayerList, Target, std::ref(Result3));
+
+
+
+		//Thread 4 gets (2*Quater+1 + Quarter) Onwards to TotalSize-1
+		std::thread th4(GetIndex, Quarter*3 + 1, PlayerList->size()-1, PlayerList, Target, std::ref(Result4));
+
+	
+		
+		th1.join();
+		th2.join();
+		th3.join();
+		th4.join();
+
+
+	}
+
+
+	return 0;
+
+}
+
+
+
+
+/*
+
+printf("Threads 1 and 2 and 3 "
+		"operating independently");
+
+	// This thread is launched by using
+// function pointer as callable
+	std::thread th1(Gaming, 3);
+
+
+	// This thread is launched by using
+   // function object as callable
+	std::thread th2(thread_obj(), 3);
+
+	auto f = [](int x) {
+		for (int i = 0; i < x; i++)
+			printf("Thread using lambda"
+			" expression as callable\n");
+	};
+
+
+	// This thread is launched by using
+   // lamda expression as callable
+	std::thread th3(f, 3);
+
+	// Wait for the threads to finish
+	// Wait for thread t1 to finish
+	th1.join();
+
+	// Wait for thread t2 to finish
+	th2.join();
+
+	// Wait for thread t3 to finish
+	th3.join();
+
+
+	printf("Threads have finished!");
+
+	return 0;
+
+
+
+
+*/
