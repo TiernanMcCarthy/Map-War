@@ -17,6 +17,9 @@ public:
 
 	Tile();
 	
+
+	void SetAttributes(bool Occupation, bool Land, Settlement& Occu);
+
 	
 	void DrawSegment(sf::Color c, sf::Image& Map);
 	

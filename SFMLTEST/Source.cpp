@@ -181,8 +181,8 @@ public:
 			Home->DrawSegment(sf::Color(51, 204, 0, 255), Map);
 			Home->occupied = false;
 		}
-		delete Home;
-		Home = NULL;
+		//delete Home;
+		//Home = NULL;
 	}
 
 	void Reproduce()
@@ -196,8 +196,11 @@ public:
 		{
 			PlayerList.push_back(*Temp);
 		}
-		Temp = NULL;
-		delete Temp;
+		else
+		{
+			Temp = NULL;
+			delete Temp;
+		}
 		}
 	//	PlayerList.push_back(new Player())
 	}
@@ -360,6 +363,8 @@ int main()
 	int size;
 	GameManager Manager = GameManager(MapData);
 	
+
+	bool pause = false;
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -375,14 +380,29 @@ int main()
 					FrameSpeed += 1;
 					window.setFramerateLimit(FrameSpeed);
 
+					for (int i = 0; i < MapData.TileMap.size() - 1; i++)
+					{
+						Tile* a;
+						a = &(MapData.TileMap)[i];
+
+						if (a->occupied)
+						{
+							a->DrawSegment(sf::Color(0, 0, 0), MapData.Map);
+						}
+					}
+
+
 				}
 				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 				{
 					FrameSpeed -= 1;
+
+					pause = !pause;
+					//MapData.RemoveObject()
 					//MapData.FindElementInList(new Settlement());
-					Settlement* a;
-					a = &(*MapData.PlayerList)[MapData.PlayerList->size() / 4 - 50];
-					MapData.FindElementInList(a);
+					//Settlement* a;
+					//a = &(*MapData.PlayerList)[MapData.PlayerList->size() / 4 - 50];
+					//MapData.FindElementInList(a);
 					window.setFramerateLimit(FrameSpeed);
 				}
 			}
@@ -397,8 +417,12 @@ int main()
 		//window.draw(sprite);
 		//window.display();
 		//MapData.PlayerList[0][0].Simulate();
-		Manager.Execute(MapData);
+		if (!pause)
+		{
+			Manager.Execute(MapData);
+		}
 		//MapData.PlayerList[0]
+		
 		MapData.UpdateWindow(window);
 	}
 

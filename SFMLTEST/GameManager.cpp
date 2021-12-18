@@ -11,14 +11,16 @@ GameManager::GameManager(MapManager map)
 void GameManager::Execute(MapManager map)
 {
 	//Settlement a = (*mapManager->PlayerList)[0];
-	
+	int OriginalLength = map.PlayerList->size();
 	for (int i = 0; i < map.PlayerList->size(); i++)
 	{
 		//map.PlayerList[0]
-		Settlement *a = &(*map.PlayerList)[i];
+		Settlement* a;
+		a = &(*map.PlayerList)[i];
+		a->GetHomeTile()->SetAttributes(true, true, *a);
 		a->Simulate();
-		a = NULL;
-		delete a;
+		//a = NULL;
+		//delete a;
 		//printf("EEEE \n");
 	}
 

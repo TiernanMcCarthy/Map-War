@@ -29,6 +29,10 @@ MapManager::MapManager(int X, int Y,std::string MapName, sf::RenderWindow &Windo
 	Spawner SpawnerGaming = Spawner();
 	SpawnController = new Spawner;
 
+	CheatTile = new Settlement();
+
+	CheatTile->RecieveDamage(-999999999);
+
 	*SpawnController = SpawnerGaming;
 	SpawnController->mapManager = this;
 	SpawnController->SpawnCharacters();
@@ -120,13 +124,13 @@ void MapManager::CreateTileMap(int width, int height)
 			{
 				DrawSegment(Map, TempTile->x, TempTile->y, sf::Color(255, 255, 255));
 			}
-			delete TempTile;
+			//delete TempTile;
 			X += 1;
 		}
 		Y += 1;
 
 	}
-	TempTile = NULL;
+	//TempTile = NULL;
 }
 
 void MapManager::DrawSegment(sf::Image& map, int x, int y, sf::Color DrawColour)
@@ -227,8 +231,8 @@ public:
 			if (a == Item)
 			{
 				printf("We FOUND THEM");
-				a = NULL;
-				delete a;
+				//a = NULL;
+				//delete a;
 				Result = Passer(i, true);
 				break;
 				//return Passer(i, true);
@@ -243,13 +247,13 @@ public:
 int MapManager::FindElementInList(Settlement *Target)
 {
 	int TotalSize = PlayerList->size();
-	
+	//int TotalSize = 0;
 	if (TotalSize>= 4)
 	{
 
 
 
-		int Quarter = floor(TotalSize / 4) - 1;
+		int Quarter = TotalSize / 4 - 1;
 
 		Passer Result1;
 		Passer Result2;
@@ -265,19 +269,19 @@ int MapManager::FindElementInList(Settlement *Target)
 
 		
 		//Thread 2 gets Quarter+1 +Quarter
-		std::thread th2(GetIndex, Quarter+1, Quarter*2, PlayerList, Target, std::ref(Result2));
+		std::thread th2(thread_obj(), Quarter+1, Quarter*2, PlayerList, Target, std::ref(Result2));
 
 	
 
 
 		//Thread 3 gets 2*Quater+1 + Quarter
 
-		std::thread th3(GetIndex, Quarter*2 + 1, Quarter * 3, PlayerList, Target, std::ref(Result3));
+		std::thread th3(thread_obj(), Quarter*2 + 1, Quarter * 3, PlayerList, Target, std::ref(Result3));
 
 
 
 		//Thread 4 gets (2*Quater+1 + Quarter) Onwards to TotalSize-1
-		std::thread th4(GetIndex, Quarter*3 + 1, PlayerList->size()-1, PlayerList, Target, std::ref(Result4));
+		std::thread th4(thread_obj(), Quarter*3 + 1, PlayerList->size()-1, PlayerList, Target, std::ref(Result4));
 
 	
 		
@@ -287,15 +291,131 @@ int MapManager::FindElementInList(Settlement *Target)
 		th4.join();
 
 
+		if (Result1.Result)
+		{
+			return Result1.Index;
+		}
+		else if (Result2.Result)
+		{
+			return Result2.Index;
+		}
+		else if (Result3.Result)
+		{
+			return Result3.Index;
+		}
+		else if (Result4.Result)
+		{
+			return Result4.Index;
+		}
+
 	}
 
 
-	return 0;
+	return -1;
 
 }
 
+int MapManager::SlowSearchInt(Settlement *X)
+{
+
+	Settlement* a;
+	for (int i = 0; i < PlayerList->size(); i++)
+	{
+		a = &(*PlayerList)[i];
+		if (a->GetHomeTile()->x == X->GetHomeTile()->x)
+		{
+			return i;
+		}
 
 
+	}
+
+
+	return -1;
+}
+
+bool MapManager::ConfirmTile(Settlement *Tar)
+{
+	Settlement* a;
+	for (int i = 0; i < PlayerList->size(); i++)
+	{
+		a = &(*PlayerList)[i];
+		if (a->GetHomeTile()->x == Tar->GetHomeTile()->x)
+		{
+			return true;
+		}
+	}
+
+
+	return false;
+}
+
+void MapManager::RemoveObject(Settlement* Target)
+{
+	int Index = SlowSearchInt(Target);
+
+	if (Index != -1)
+	{
+		Target->Delete();
+		PlayerList->erase(PlayerList->begin() + Index);
+	}
+
+}
+
+//MultiThread FIX!
+/*
+void MapManager::RemoveObject(Settlement *Target)
+{
+	//Prevent invalid execution
+	int Index = FindElementInList(Target);
+
+
+	if (PlayerList != NULL)
+	{
+
+		if (Index <= PlayerList->size() - 1 && Index != -1)
+		{
+
+			//Clear all data within
+			Settlement* a = &(*PlayerList)[Index];
+			a->Delete();
+
+			//delete a;
+			//a = NULL;
+
+
+			//Remove from Vector Array
+
+			PlayerList->erase(PlayerList->begin() + Index);
+
+
+
+		}
+
+	}
+
+
+}*/
+
+
+Settlement& MapManager::SlowSearch(int X)
+{
+	
+	Settlement* a;
+	for (int i = 0; i < PlayerList->size();i++)
+	{
+		a = &(*PlayerList)[i];
+		if (a->GetHomeTile()->x == X)
+		{
+			return *a;
+		}
+
+
+	}
+
+
+	return *(new Settlement());
+}
 
 /*
 

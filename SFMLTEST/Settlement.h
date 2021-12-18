@@ -1,6 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "MapData.h"
+#include "Confirmation.h"
+
+
 class Settlement {
 
 public:
@@ -14,6 +17,8 @@ public:
 	void AttackState();
 	void SetTarget(Settlement *Targ);
 
+
+
 	void RecieveDamage(int Amount);
 
 	Tile* GetHomeTile();
@@ -24,6 +29,9 @@ public:
 	sf::Color GetColour();
 
 	bool operator == (Settlement b);
+	Settlement* Target = NULL;
+
+	bool ValidMan = false;
 private:
 
 	
@@ -33,10 +41,16 @@ private:
 	int x, y;
 	Tile* Home;
 	
-	Settlement* Target;
 
 	MapManager *MapData;
 	sf::Color Colour;
 
 
+	Confirmation TestAvailableLand(Tile* TestTile, Settlement* S); //Return A Hex Value of 0		0		0		0      And pick one
+
+	void CheckTargetTile();
+
+	bool ValidTarget();
+
+	bool PickTarget();
 };

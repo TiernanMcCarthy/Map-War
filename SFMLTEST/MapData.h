@@ -38,15 +38,25 @@ public:
 
 	int FindElementInList(Settlement *Target);
 
+	Settlement& SlowSearch(int X);
+
+	bool ConfirmTile(Settlement *Tar);
+
+	void RemoveObject(Settlement *Target);
+
 
 	Spawner* SpawnController;
 
 	MapManager();
+
+
+	Settlement *CheatTile;
 private:
 	sf::Texture MapTexture;
 	sf::RenderWindow* WindowReference;
 	sf::Sprite sprite;
 	void CreateTileMap(int width, int height);
+	int SlowSearchInt(Settlement *X);
 
 
 };

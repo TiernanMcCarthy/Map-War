@@ -6,12 +6,24 @@ Tile::Tile(float X, float Y, bool L)
 	y = Y;
 	land = L;
 	occupied = false;
+	Occupier = nullptr;
 }
 
 Tile::Tile()
 {
 	//Do something
+	occupied = false;
+	Occupier = nullptr;
 }
+
+
+void Tile::SetAttributes(bool Occupation, bool Land, Settlement& occu)
+{
+	occupied = Occupation;
+	land = true;
+	Occupier = &occu;
+}
+
 
 void Tile::DrawSegment(sf::Color c, sf::Image &Map)
 {
