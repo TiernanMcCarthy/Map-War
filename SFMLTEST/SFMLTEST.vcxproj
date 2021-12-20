@@ -77,11 +77,11 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Tiern\Documents\Project\Map-War\SFML\include;C:\Users\tiern\Videos\SFML-Map-master\SFML\include;C:\Users\Tiern\Desktop\SFML-Map-master\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Tiern\Documents\Work\Map-War\SFML\include;C:\Users\Tiern\Documents\Project\Map-War\SFML\include;C:\Users\tiern\Videos\SFML-Map-master\SFML\include;C:\Users\Tiern\Desktop\SFML-Map-master\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link />
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Tiern\Documents\Project\Map-War\SFML\lib;C:\Users\tiern\Videos\SFML-Map-master\SFML\lib;C:\Users\Tiern\Desktop\SFML-Map-master\SFML\lib;C:\Users\Tiernan\source\repos\SFMLTEST\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Tiern\Documents\Work\Map-War\SFML\lib;C:\Users\Tiern\Documents\Project\Map-War\SFML\lib;C:\Users\tiern\Videos\SFML-Map-master\SFML\lib;C:\Users\Tiern\Desktop\SFML-Map-master\SFML\lib;C:\Users\Tiernan\source\repos\SFMLTEST\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system-d.lib;sfml-graphics-d.lib;winmm.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

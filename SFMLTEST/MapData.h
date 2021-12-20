@@ -38,7 +38,7 @@ public:
 
 	int FindElementInList(Settlement *Target);
 
-	Settlement& SlowSearch(int X);
+	Settlement& SlowSearch(int X, int Y);
 
 	bool ConfirmTile(Settlement *Tar);
 

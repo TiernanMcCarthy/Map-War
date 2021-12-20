@@ -25,6 +25,7 @@ MapManager::MapManager(int X, int Y,std::string MapName, sf::RenderWindow &Windo
 	CreateTileMap(X, Y);
 	CreateTexture(X, Y);
 	printf("Map Generated \n");
+	GenerateValidLand();
 	PlayerList = new std::vector<Settlement>;
 	Spawner SpawnerGaming = Spawner();
 	SpawnController = new Spawner;
@@ -51,10 +52,11 @@ bool MapManager::CreateTexture(int X, int Y)
 		printf("Loading the texture form map failed \n");
 		return false;
 	}
-
 	MapTexture.update(Map); //fill the map contents
 	MapTexture.setRepeated(false);
 	MapTexture.setSmooth(false);
+
+
 
 	sprite.setTexture(MapTexture);
 	//UpdateWindow();
@@ -80,6 +82,7 @@ void MapManager::UpdateWindow(sf::RenderWindow &temp)
 
 bool MapManager::LoadMapFile(std::string FileName)
 {
+	printf("Loading Map \n");
 	if (!Map.loadFromFile(FileName))
 	{
 		printf("Map load failed \n");
@@ -122,7 +125,9 @@ void MapManager::CreateTileMap(int width, int height)
 			TileMap.push_back(*TempTile);
 			if (TempTile->land && LandDebug)
 			{
-				DrawSegment(Map, TempTile->x, TempTile->y, sf::Color(255, 255, 255));
+				//Ti
+				//DrawSegment(Map, TempTile->x, TempTile->y, sf::Color(255, 255, 255));
+				//DrawSegment(Map, TileMap[Width/TileSize].x, TileMap[Y*X].y, sf::Color(TileMap[Y*X].x, 0, 0));
 			}
 			//delete TempTile;
 			X += 1;
@@ -151,7 +156,9 @@ void MapManager::GenerateValidLand() //Regenerate Land Map incase of change
 		TileMap[i].land = TestSegment(TileMap[i].x, TileMap[i].y);
 		if (TileMap[i].land && LandDebug==1) //Debug
 		{
-			DrawSegment(Map, TileMap[i].x, TileMap[i].y, sf::Color(255, 255, 255));
+			//DrawSegment(Map, TileMap[i].x, TileMap[i].y, sf::Color(255, 255, 255));
+			DrawSegment(Map,TileMap[i].x, TileMap[i].y, sf::Color(0, 0, TileMap[i].y));
+
 		}
 	}
 }
@@ -322,7 +329,7 @@ int MapManager::SlowSearchInt(Settlement *X)
 	for (int i = 0; i < PlayerList->size(); i++)
 	{
 		a = &(*PlayerList)[i];
-		if (a->GetHomeTile()->x == X->GetHomeTile()->x)
+		if (a->GetHomeTile()->x == X->GetHomeTile()->x && a->GetHomeTile()->y == X->GetHomeTile()->y)
 		{
 			return i;
 		}
@@ -398,14 +405,14 @@ void MapManager::RemoveObject(Settlement *Target)
 }*/
 
 
-Settlement& MapManager::SlowSearch(int X)
+Settlement& MapManager::SlowSearch(int X,int Y)
 {
 	
 	Settlement* a;
 	for (int i = 0; i < PlayerList->size();i++)
 	{
 		a = &(*PlayerList)[i];
-		if (a->GetHomeTile()->x == X)
+		if (a->GetHomeTile()->x == X && a->GetHomeTile()->y == Y)
 		{
 			return *a;
 		}

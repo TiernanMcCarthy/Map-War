@@ -41,6 +41,8 @@ private:
 	int x, y;
 	Tile* Home;
 	
+	float DamageOffsetModifier;
+
 
 	MapManager *MapData;
 	sf::Color Colour;

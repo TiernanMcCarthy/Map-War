@@ -24,6 +24,8 @@ Settlement::Settlement(Tile& home, sf::Color colour, MapManager& Data)
 	Home->DrawSegment(Colour, MapData->Map);
 	Home->SetAttributes(true, true, *this);
 
+	DamageOffsetModifier = 1;
+
 	ValidMan = true;
 }
 
@@ -123,7 +125,7 @@ void CheckTarget(Settlement *S, Tile *Targ)
 void Settlement::CheckTargetTile()
 {
 	Target = nullptr;
-	Settlement* Temp = &MapData->SlowSearch(TileTest->x);
+	Settlement* Temp = &MapData->SlowSearch(TileTest->x,TileTest->y);
 	if (Temp->x == TileTest->x && Temp->GetColour()!=GetColour())
 	{
 		Target = Temp;
@@ -146,7 +148,7 @@ Confirmation Settlement::TestAvailableLand(Tile* TestTile, Settlement* S) //Retu
 				return  Confirmation(0x0001, TileTest);
 			else if (TileTest->occupied == true)
 			{
-				CheckTargetTile();
+				//CheckTargetTile();
 					
 					//CheckTarget(S, TileTest);
 				
@@ -170,7 +172,7 @@ Confirmation Settlement::TestAvailableLand(Tile* TestTile, Settlement* S) //Retu
 			else if (TileTest->occupied == true)
 			{
 				
-				CheckTargetTile();
+				//CheckTargetTile();
 			}
 		}
 		//printf("Invalid Tile \n");
@@ -186,7 +188,7 @@ Confirmation Settlement::TestAvailableLand(Tile* TestTile, Settlement* S) //Retu
 				return  Confirmation(0x1000, TileTest);
 			else if (TileTest->occupied == true)
 			{
-				CheckTargetTile();
+				//CheckTargetTile();
 			}
 		}
 		//printf("Invalid Tile \n");
@@ -203,7 +205,7 @@ Confirmation Settlement::TestAvailableLand(Tile* TestTile, Settlement* S) //Retu
 				return  Confirmation(0x0010, TileTest);
 			else if (TileTest->occupied == true)
 			{
-				CheckTargetTile();
+				//CheckTargetTile();
 			}
 		}
 	}
@@ -238,8 +240,17 @@ void Settlement::AttackState()
 	//Target = NULL;
 	if (Target!=nullptr)
 	{
+
+		if (Target->GetHomeTile()->x == x && Target->GetHomeTile()->y == y)
+		{
+			printf("YOu've only gone and targeted yourself \n");
+		}
+
 		//printf("WASHSAHHAS \n");
 		Target->RecieveDamage(BaseDamage);
+
+		//Home->DrawSegment(sf::Color(0, x, y),MapData->Map);
+		//Target->Home->DrawSegment(sf::Color(0, x, y), MapData->Map);
 	}
 	else //Pick a target
 	{
@@ -252,7 +263,7 @@ void Settlement::AttackState()
 
 bool Settlement::ValidTarget()
 {
-	Settlement* Temp = &MapData->SlowSearch(TileTest->x);
+	Settlement* Temp = &MapData->SlowSearch(TileTest->x, TileTest->y);
 	if (Temp->x == TileTest->x && Temp->GetColour() != GetColour())
 	{
 		Target = Temp;

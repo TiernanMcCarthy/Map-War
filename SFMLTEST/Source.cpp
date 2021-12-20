@@ -327,11 +327,11 @@ int main()
 	}
 
 
-	CreateTileMap();
+	//CreateTileMap();
 
-	TileMap.size();
-	TileMap[7300].land;
-	GetTileFromCord(10, 10);
+	//TileMap.size();
+	//TileMap[7300].land;
+//	GetTileFromCord(10, 10);
 	if (!texture.loadFromImage(Map))
 	{
 		printf("Loading the texture form map failed \n");
@@ -357,8 +357,8 @@ int main()
 
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
-	int FrameSpeed = 60;
-	window.setFramerateLimit(FrameSpeed);// limit frame rate to a reasonable level
+	int FrameSpeed = 600;
+	//window.setFramerateLimit(FrameSpeed);// limit frame rate to a reasonable level
 
 	int size;
 	GameManager Manager = GameManager(MapData);
