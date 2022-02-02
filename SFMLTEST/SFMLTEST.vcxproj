@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\Tiern\Documents\Work\Map-War\SFML\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Tiern\Documents\Work\Map-War\SFML\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\SFML\include;C:\Users\Tiern\Documents\Work\Map-War\SFML\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SFML\lib;C:\Users\Tiern\Documents\Work\Map-War\SFML\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -105,13 +105,13 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Tiern\Documents\Work\Map-War\SFML\include;C:\Users\Tiernan\source\repos\SFMLTEST\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML\include;C:\Users\Tiern\Documents\Work\Map-War\SFML\include;C:\Users\Tiernan\source\repos\SFMLTEST\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>sfml-window-s.lib;sfml-graphics-s.lib;sfml-audio-s.lib;sfml-network-s.lib;sfml-system-s.lib;sfml-main.lib;opengl32.lib;winmm.lib;gdi32.lib;freetype.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\Tiern\Documents\Work\Map-War\SFML\lib;C:\Users\Tiernan\source\repos\SFMLTEST\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\SFML\lib;C:\Users\Tiern\Documents\Work\Map-War\SFML\lib;C:\Users\Tiernan\source\repos\SFMLTEST\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
