@@ -14,22 +14,13 @@ void GameManager::Execute(MapManager map)
 	int OriginalLength = map.PlayerList->size();
 	for (int i = 0; i < map.PlayerList->size(); i++)
 	{
-		//map.PlayerList[0]
 		Settlement* a;
 		a = &(*map.PlayerList)[i];
 		a->GetHomeTile()->SetAttributes(true, true, *a);
 		a->Simulate();
-		//a = NULL;
-		//delete a;
-		//printf("EEEE \n");
+
 	}
 
-
-	//for (int i = 0; i < mapManager->PlayerList->size(); i++)
-	//{
-		//(*mapManager->PlayerList)[0].Simulate();
-
-	//}
 
 
 }

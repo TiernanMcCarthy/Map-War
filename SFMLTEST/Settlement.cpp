@@ -3,13 +3,20 @@
 #include "Confirmation.h"
 #include "Spawner.h"
 #include "Tile.h"
+#include <math.h>
 #include <iostream>
 
 Settlement::Settlement(Tile& home, sf::Color colour, MapManager& Data)
 {
 	Colour = colour;
 
-	Health = 100;
+
+
+	//srand(time(NULL));
+
+	//Health = 100;
+	Health = rand() % 100 + 1;
+	
 
 	Home = &home;
 	MapData = &Data;
@@ -42,25 +49,16 @@ Settlement::Settlement()
 
 void Settlement::Delete()
 {
-	sf::Color(51, 204, 0, 255);
-
-	//printf("DEAD \n");
-
-	MapData->DrawSegment(MapData->Map, Home->x, Home->y, sf::Color(0, 0, 0, 255));
-
+	//sf::Color(51, 204, 0, 255);
+	if (ShowDeaths)
+	{
+		MapData->DrawSegment(MapData->Map, Home->x, Home->y, DeathColour);
+	}
 	Home->occupied = false;
 
 	Home->Occupier = nullptr;
 
-	
-	//Home = NULL;
-	//delete Home;
 
-	//Target = NULL;
-	//delete Target;
-
-	//MapData = NULL;
-	//delete MapData;
 
 }
 
@@ -135,9 +133,7 @@ void Settlement::CheckTargetTile()
 //																	    UP	Down	Left	Right
 Confirmation Settlement::TestAvailableLand(Tile* TestTile, Settlement* S) //Return A Hex Value of 0		0		0		0      And pick one
 {
-	//Tile* TileTest = new Tile();
 
-	//Right    //THESE TESTS DO LITERALLY NOTHING LMAO
 	if (TestTile->x != Width - TileSize) //Not too far offmap to the right
 	{
 		TileTest = &GetTileFromCord(TestTile->x + TileSize, TestTile->y, &S->GetMapData());
@@ -154,9 +150,7 @@ Confirmation Settlement::TestAvailableLand(Tile* TestTile, Settlement* S) //Retu
 				
 			}
 
-			//return TileTest;
 		}
-		//printf("Invalid Tile \n");
 	}
 
 
@@ -172,10 +166,8 @@ Confirmation Settlement::TestAvailableLand(Tile* TestTile, Settlement* S) //Retu
 			else if (TileTest->occupied == true)
 			{
 				
-				//CheckTargetTile();
 			}
 		}
-		//printf("Invalid Tile \n");
 	}
 	//UP
 	if (TestTile->y != 0)
@@ -241,12 +233,8 @@ void Settlement::AttackState()
 	if (Target!=nullptr)
 	{
 
-		if (Target->GetHomeTile()->x == x && Target->GetHomeTile()->y == y)
-		{
-			printf("YOu've only gone and targeted yourself \n");
-		}
+	
 
-		//printf("WASHSAHHAS \n");
 		Target->RecieveDamage(BaseDamage);
 
 		//Home->DrawSegment(sf::Color(0, x, y),MapData->Map);
@@ -387,21 +375,16 @@ void Settlement::Simulate()
 	
 		}
 
-		//Result.Home = NULL;
-		//delete Result.Home;
-		//std::cout << Result << std::endl;
-		//CreateNew
-		//
-		//MapData->
+		
 		if (Target != nullptr)
 		{
 			//AttackState();
 
 		}
-		
+		RecieveDamage(20.0f); //Slow decay
 		if(PickTarget())
 		{
-			//printf("AAAAAAAA");
+			
 			if (x > -1 && Target != nullptr)
 			{
 				if (Target->Home != nullptr)

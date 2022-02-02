@@ -1,2 +1,5 @@
-﻿  LINK : C:\Users\Tiern\Documents\Work\Map-War\Debug\SFMLTEST.exe not found or not built by the last incremental link; performing full link
+﻿  Source.cpp
+C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Source.cpp(29,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Source.cpp(97,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Source.cpp(74,6): warning C4101: 'size': unreferenced local variable
   SFMLTEST.vcxproj -> C:\Users\Tiern\Documents\Work\Map-War\Debug\SFMLTEST.exe
