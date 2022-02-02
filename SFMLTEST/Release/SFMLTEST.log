@@ -1,51 +1,8 @@
-﻿  Confirmation.cpp
-  GameManager.cpp
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\GameManager.cpp(15,20): warning C4018: '<': signed/unsigned mismatch
-  MapData.cpp
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(124,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(124,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(154,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(156,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(156,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(160,74): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(160,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(160,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(329,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(347,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\MapData.cpp(412,20): warning C4018: '<': signed/unsigned mismatch
-  Settlement.cpp
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(18,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(25,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(26,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(28,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(29,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(55,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(55,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(126,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(126,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(139,63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(139,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(160,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(160,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(175,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(175,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(193,63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(193,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(238,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(254,63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(254,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Settlement.cpp(384,17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Source.cpp
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Source.cpp(29,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Source.cpp(97,24): warning C4018: '<': signed/unsigned mismatch
-  Spawner.cpp
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Spawner.cpp(7,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Tile.cpp
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Tile.cpp(32,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Tile.cpp(34,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+﻿  Source.cpp
+C:\Users\Tiern\Documents\Work\Map-War\SFMLTEST\Source.cpp(52,24): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  9 of 311 functions ( 2.9%) were compiled, the rest were copied from previous compilation.
+  1 of 306 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFMLTEST.vcxproj -> C:\Users\Tiern\Documents\Work\Map-War\Release\SFMLTEST.exe
