@@ -78,7 +78,7 @@ void MapManager::SetWindowReference(sf::RenderWindow &Rw)
 	WindowReference = &Rw;
 }
 
-
+//Load a specified map string from the directory
 bool MapManager::LoadMapFile(std::string FileName)
 {
 	printf("Loading Map \n");
@@ -89,8 +89,8 @@ bool MapManager::LoadMapFile(std::string FileName)
 	}
 	return true;
 }
-
-bool MapManager::TestSegment(int x, int y) //If a single pixel is not perfectly green (land) then ignore it, this is an early implementation
+//If a single pixel is not perfectly green (land) then ignore it, this is an early implementation
+bool MapManager::TestSegment(int x, int y) 
 {
 	for (int Y = y; Y < y + TileSize; Y++)
 	{
@@ -107,7 +107,7 @@ bool MapManager::TestSegment(int x, int y) //If a single pixel is not perfectly 
 }
 
 
-
+//Generates a map of tiles for population for settlements later
 void MapManager::CreateTileMap(int width, int height)
 {
 	//Map is not even, just pretend 980x1520 for now and make something to adjust for stuff like this later
@@ -128,15 +128,14 @@ void MapManager::CreateTileMap(int width, int height)
 				//DrawSegment(Map, TempTile->x, TempTile->y, sf::Color(255, 255, 255));
 				//DrawSegment(Map, TileMap[Width/TileSize].x, TileMap[Y*X].y, sf::Color(TileMap[Y*X].x, 0, 0));
 			}
-			//delete TempTile;
 			X += 1;
 		}
 		Y += 1;
 
 	}
-	//TempTile = NULL;
 }
 
+//
 void MapManager::DrawSegment(sf::Image& map, int x, int y, sf::Color DrawColour)
 {
 	for (int Y = y; Y < y + TileSize; Y++)
@@ -163,19 +162,6 @@ void MapManager::GenerateValidLand() //Regenerate Land Map incase of change
 }
 
 
-void Gaming(int epic)
-{
-
-	for (int i = 0; i < epic; i++)
-	{
-		printf("Thread using function pointer as a callable \n");
-	
-	
-	}
-
-
-
-}
 
 struct Passer
 {
@@ -224,6 +210,8 @@ Passer GetIndex(int Lower, int Higher, std::vector<Settlement> *Settlements,Sett
 
 }
 
+/*
+Threading test will pursue again
 
 // A callable object
 class thread_obj {
@@ -236,7 +224,6 @@ public:
 			a = &(*Settlements)[i];
 			if (a == Item)
 			{
-				printf("We FOUND THEM");
 				//a = NULL;
 				//delete a;
 				Result = Passer(i, true);
@@ -319,7 +306,7 @@ int MapManager::FindElementInList(Settlement *Target)
 
 	return -1;
 
-}
+}*/
 
 int MapManager::SlowSearchInt(Settlement *X)
 {
@@ -370,6 +357,7 @@ void MapManager::RemoveObject(Settlement* Target)
 
 MapManager::MapManager()
 {
+
 }
 
 //MultiThread FIX!
