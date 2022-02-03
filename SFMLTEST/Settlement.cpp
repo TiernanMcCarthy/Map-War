@@ -214,6 +214,7 @@ sf::Color Settlement::GetColour()
 
 void Settlement::RecieveDamage(int Damage)
 {
+
 	if (this != nullptr)
 	{
 		Health -= Damage;
@@ -225,6 +226,7 @@ void Settlement::RecieveDamage(int Damage)
 			}
 		}
 	}
+
 }
 
 void Settlement::AttackState()
@@ -265,141 +267,145 @@ bool Settlement::ValidTarget()
 bool Settlement::PickTarget()
 {
 	Target = nullptr;
-	if (x > -1 && x<Width - TileSize + 1 && y>-1 && y < Height - TileSize + 1)
-	{
-		//Right    //THESE TESTS DO LITERALLY NOTHING LMAO
-		if (x != Width - TileSize) //Not too far offmap to the right
+		if (x > -1 && x<Width - TileSize + 1 && y>-1 && y < Height - TileSize + 1)
 		{
-			TileTest = &GetTileFromCord(x + TileSize, y, MapData);
-			if (TileTest->land)
+			//Right    //THESE TESTS DO LITERALLY NOTHING LMAO
+			if (x != Width - TileSize) //Not too far offmap to the right
 			{
-				//printf("Tile Found \n");
-				if (TileTest->occupied == true)
-					CheckTargetTile();
-				if (Target != nullptr)
+				TileTest = &GetTileFromCord(x + TileSize, y, MapData);
+				if (TileTest->land)
 				{
-					return true;
+					//printf("Tile Found \n");
+					if (TileTest->occupied == true)
+						CheckTargetTile();
+					if (Target != nullptr)
+					{
+						return true;
+					}
+
+					//return TileTest;
 				}
-
-				//return TileTest;
+				//printf("Invalid Tile \n");
 			}
-			//printf("Invalid Tile \n");
-		}
 
 
-		//Down
-		if (y != Height - TileSize)
-		{
-			TileTest = &GetTileFromCord(x, y + TileSize, MapData);
-			if (TileTest->land)
+			//Down
+			if (y != Height - TileSize)
 			{
-				//printf("Tile Found \n");
-				if (TileTest->occupied == true)
-					CheckTargetTile();
-				if (Target != nullptr)
+				TileTest = &GetTileFromCord(x, y + TileSize, MapData);
+				if (TileTest->land)
 				{
-					return true;
+					//printf("Tile Found \n");
+					if (TileTest->occupied == true)
+						CheckTargetTile();
+					if (Target != nullptr)
+					{
+						return true;
+					}
 				}
+				//printf("Invalid Tile \n");
 			}
-			//printf("Invalid Tile \n");
-		}
-		//UP
-		if (y != 0)
-		{
-			TileTest = &GetTileFromCord(x, y - TileSize, MapData);
-			if (TileTest->land)
+			//UP
+			if (y != 0)
 			{
-				if (TileTest->occupied == true)
-					CheckTargetTile();
-				if (Target != nullptr)
+				TileTest = &GetTileFromCord(x, y - TileSize, MapData);
+				if (TileTest->land)
 				{
-					return true;
+					if (TileTest->occupied == true)
+						CheckTargetTile();
+					if (Target != nullptr)
+					{
+						return true;
+					}
 				}
+				//printf("Invalid Tile \n");
 			}
-			//printf("Invalid Tile \n");
-		}
 
 
-		//LEFT
-		if (x != 0) //Not offmap to the left
-		{
-			TileTest = &GetTileFromCord(x - TileSize, y, MapData);
-			if (TileTest->land == true)
+			//LEFT
+			if (x != 0) //Not offmap to the left
 			{
-				if (TileTest->occupied == true)
-					CheckTargetTile();
-				if (Target != nullptr)
+				TileTest = &GetTileFromCord(x - TileSize, y, MapData);
+				if (TileTest->land == true)
 				{
-					return true;
+					if (TileTest->occupied == true)
+						CheckTargetTile();
+					if (Target != nullptr)
+					{
+						return true;
+					}
 				}
 			}
 		}
-	}
+	
 	return false;
 }
 
 void Settlement::Simulate()
 {
-	ReproductiveValue += 0.03f;
-	//Home->Occupier = this;
-	//TileTest = &GetTileFromCord(x, y - TileSize, MapData); /////AAAAAAAAAAAAAAAAAA HERE STUPIDUSDFHJAsaf
-	//CheckTarget(this, TileTest);
-	if (ReproductiveValue >= ReproductionThreshold)
+	if (Home)
 	{
-		ReproductiveValue = 0;
-		Confirmation Result=TestAvailableLand(Home, this);
-
-		//Result.ValidState = 0x0000;
-		switch (Result.ValidState & 0x1111)
+		ReproductiveValue += 0.03f;
+		//Home->Occupier = this;
+		//TileTest = &GetTileFromCord(x, y - TileSize, MapData); /////AAAAAAAAAAAAAAAAAA HERE STUPIDUSDFHJAsaf
+		//CheckTarget(this, TileTest);
+		if (ReproductiveValue >= ReproductionThreshold)
 		{
-		case 0x1000: //UP
-			MapData->SpawnController->CreateCharacter(this, Result.Home);
-			//printf("Up \n");
+			ReproductiveValue = 0;
+			Confirmation Result = TestAvailableLand(Home, this);
 
-			break;
-		case 0x0100: //DOWN
-			MapData->SpawnController->CreateCharacter(this, Result.Home);
-			//printf("Down \n");
-			break;
-
-		case 0x0010: //LEFT
-			MapData->SpawnController->CreateCharacter(this, Result.Home);
-			//printf("Left \n");
-			break;
-
-		case 0x0001: //RIGHT
-			MapData->SpawnController->CreateCharacter(this, Result.Home);
-		//	printf("Right \n");
-			break;
-
-	
-		}
-
-		
-		if (Target != nullptr)
-		{
-			//AttackState();
-
-		}
-		RecieveDamage(20.0f); //Slow decay
-		if(PickTarget())
-		{
-			
-			if (x > -1 && Target != nullptr)
+			//Result.ValidState = 0x0000;
+			switch (Result.ValidState & 0x1111)
 			{
-				if (Target->Home != nullptr)
+			case 0x1000: //UP
+				MapData->SpawnController->CreateCharacter(this, Result.Home);
+				//printf("Up \n");
+
+				break;
+			case 0x0100: //DOWN
+				MapData->SpawnController->CreateCharacter(this, Result.Home);
+				//printf("Down \n");
+				break;
+
+			case 0x0010: //LEFT
+				MapData->SpawnController->CreateCharacter(this, Result.Home);
+				//printf("Left \n");
+				break;
+
+			case 0x0001: //RIGHT
+				MapData->SpawnController->CreateCharacter(this, Result.Home);
+				//	printf("Right \n");
+				break;
+
+
+			}
+
+
+			if (Target != nullptr)
+			{
+				//AttackState();
+
+			}
+			RecieveDamage(20.0f); //Slow decay
+			if (PickTarget())
+			{
+
+				if (x > -1 && Target != nullptr)
 				{
-					if (Target->ValidMan)
+					if (Target->Home != nullptr)
 					{
-						if (Target->Home->occupied)
+						if (Target->ValidMan)
 						{
-							AttackState();
+							if (Target->Home->occupied)
+							{
+								AttackState();
+							}
 						}
 					}
 				}
 			}
+
 		}
-		
 	}
 }
 

@@ -23,18 +23,19 @@ int main()
 
 	//SFML window systems are managed by the map manager
 	//Map manager is responsible for loading the map file and generating tiles for populating from this data
-	MapManager MapData = MapManager(Width, Height,"map.png",window);
+	MapManager MapData = MapManager(Width, Height,Mapname,window);
 	//Draw and manage the first texture
 	MapData.UpdateWindow(window);
 
 
 	window.setFramerateLimit(FrameRate);
-
+	//Create Manager for simulation execution
 	GameManager Manager = GameManager(MapData);
 	
 
 	bool pause = false;
 
+	//By increasing variables and the natural flow of the simulation this might be redundant
 	int IterationsPerFrame = 3;
 
 	while (window.isOpen())
@@ -46,9 +47,9 @@ int main()
 				window.close();
 			if (event.type==sf::Event::KeyPressed)
 			{
-				//sf::Keyboard::isKeyPressed(sf::Keyboard::Left)
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 				{
+					//Draw all alive Tiles
 					for (int i = 0; i < MapData.TileMap.size() - 1; i++)
 					{
 						Tile* a;
@@ -59,7 +60,6 @@ int main()
 							a->DrawSegment(sf::Color(0, 0, 0), MapData.Map);
 						}
 					}
-
 
 				}
 				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))

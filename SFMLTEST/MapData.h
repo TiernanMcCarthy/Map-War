@@ -3,8 +3,6 @@
 #include <SFML/System.hpp>
 #include<vector>
 #include "Tile.h"
-//#include "Settlement.h"
-//#include "Spawner.h"
 class Settlement;
 class Spawner;
 class MapManager
@@ -14,27 +12,28 @@ public:
 	MapManager(int width, int height, std::string MapName,sf::RenderWindow &WindowRef);
 	MapManager(int Size);
 
-	sf::Image Map;
 
-	std::vector<Tile> TileMap;
+	sf::Image Map; //Contain the supplied Map PNG
 
-	std::vector<Settlement> *PlayerList;
+	std::vector<Tile> TileMap; //Holds a generated map of tiles that settlements can occupy and reference during gameplay
 
+	std::vector<Settlement> *PlayerList; //Player List stores all generated settlements and can be crossreferenced to find correct players
 
 
 	bool LoadMapFile(std::string FileName);
 
 
-	void DrawSegment(sf::Image& map, int x, int y, sf::Color DrawColour);
+	void DrawSegment(sf::Image& map, int x, int y, sf::Color DrawColour); //Fill a rectangle at x & y * TileSize
+
 	bool TestSegment(int x, int y); //If a single pixel is not perfectly green (land) then ignore it, this is an early implementation
 
 	bool CreateTexture(int X, int Y);
 
-	void UpdateWindow(sf::RenderWindow &t);
+	void UpdateWindow(sf::RenderWindow &t); //Redraw window instance
 
 	void SetWindowReference(sf::RenderWindow &Rw);
 
-	void GenerateValidLand();
+	void GenerateValidLand(); //Create Tile Map of valid land tiles
 
 	int FindElementInList(Settlement *Target);
 
@@ -42,9 +41,10 @@ public:
 
 	bool ConfirmTile(Settlement *Tar);
 
-	void RemoveObject(Settlement *Target);
+	//Speed up with more intelligent method later
+	void RemoveObject(Settlement *Target); //Iterate through playerlist and find the target
 
-
+	//Manages spawning new settlements at the start of the game and during reproduction
 	Spawner* SpawnController;
 
 	MapManager();

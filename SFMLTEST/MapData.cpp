@@ -19,27 +19,29 @@ MapManager::MapManager(int Size) //Do not pursue
 
 MapManager::MapManager(int X, int Y,std::string MapName, sf::RenderWindow &WindowRef)
 {
-	//SetWindowReference(WindowRef);
-	WindowReference = &WindowRef;
+	//Window reference for drawing to.
+	SetWindowReference(WindowRef);
+	//Map creation
 	LoadMapFile(MapName);
 	CreateTileMap(X, Y);
 	CreateTexture(X, Y);
 	printf("Map Generated \n");
-	GenerateValidLand();
-	PlayerList = new std::vector<Settlement>;
-	Spawner SpawnerGaming = Spawner();
-	SpawnController = new Spawner;
+	GenerateValidLand(); //Create Tiles for Settlements to inhabit
+
+	//Game Function
+	PlayerList = new std::vector<Settlement>; //Generate Player List
+	Spawner SpawnLocal = Spawner();
+	SpawnController = new Spawner; //Create a valid spawn controller
 
 	CheatTile = new Settlement();
-
 	CheatTile->RecieveDamage(-999999999);
 
-	*SpawnController = SpawnerGaming;
+	*SpawnController = SpawnLocal;
 	SpawnController->mapManager = this;
-	SpawnController->SpawnCharacters();
+	SpawnController->SpawnCharacters(); //Create some protections to prevent execution under bad terms
 	printf("Settlements created! \n");
 }
-
+//Create a texture to be drawn onto and rendered onto the screen
 bool MapManager::CreateTexture(int X, int Y)
 {
 	if (!MapTexture.create(X, Y))
@@ -56,16 +58,11 @@ bool MapManager::CreateTexture(int X, int Y)
 	MapTexture.setRepeated(false);
 	MapTexture.setSmooth(false);
 
-
-
 	sprite.setTexture(MapTexture);
-	//UpdateWindow();
-	//WindowReference->setFramerateLimit(FrameRate);
-
 
 	return true;
 }
-
+//Clears the Window screen and updates the texture for rendering
 void MapManager::UpdateWindow(sf::RenderWindow &temp)
 {
 	WindowReference->clear();
@@ -74,10 +71,12 @@ void MapManager::UpdateWindow(sf::RenderWindow &temp)
 	WindowReference->display();
 }
 
-//void MapManager::SetWindowReference(sf::RenderWindow Rw)
-//{
-//	WindowReference = &Rw;
-//}
+
+//Sets the window reference for manipulating
+void MapManager::SetWindowReference(sf::RenderWindow &Rw)
+{
+	WindowReference = &Rw;
+}
 
 
 bool MapManager::LoadMapFile(std::string FileName)
@@ -367,6 +366,10 @@ void MapManager::RemoveObject(Settlement* Target)
 		PlayerList->erase(PlayerList->begin() + Index);
 	}
 
+}
+
+MapManager::MapManager()
+{
 }
 
 //MultiThread FIX!
