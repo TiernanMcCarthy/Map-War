@@ -10,17 +10,13 @@ Settlement::Settlement(Tile& home, sf::Color colour, MapManager& Data)
 {
 	Colour = colour;
 
-
-
-	//srand(time(NULL));
-
-	//Health = 100;
+	//Randomise the health between 0-1, a more complicated solution is needed with more factors for a more dynamic game
 	Health = rand() % 100 + 1;
 	
 
 	Home = &home;
 	MapData = &Data;
-	Home->occupied = true;
+	Home->occupied = true; //Inform the home tile of this settlement's existence
     Home->Occupier = this;
 	x = home.x;
 	y = home.y;
@@ -31,7 +27,7 @@ Settlement::Settlement(Tile& home, sf::Color colour, MapManager& Data)
 	Home->DrawSegment(Colour, MapData->Map);
 	Home->SetAttributes(true, true, *this);
 
-	DamageOffsetModifier = 1;
+	DamageOffsetModifier = 1; //Implement later to randomise damage
 
 	ValidMan = true;
 }
@@ -46,7 +42,7 @@ Settlement::Settlement()
 	//NewTile->SetAttributes(true, true, *a);
 	
 }
-
+//Clear the Occupied Tile of References to this object
 void Settlement::Delete()
 {
 	//sf::Color(51, 204, 0, 255);
